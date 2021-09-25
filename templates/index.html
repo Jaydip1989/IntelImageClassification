@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Classifier</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            text-align:center;
+            font-family: 'Play', sans-serif;
+            font-size:12px;
+        }
+        .jumbotron {
+            background-color:#A637A1;
+            color:#000000;
+        }
+        .postImage {
+            position:relative;
+            left: 500px;
+            right: 500px;
+            width: 500px;
+        }
+        .prevImage {
+            height: 400px;
+            width: 400px;
+        }
+        p {
+            text-align:center;
+            color:#ffffff;
+            font-size:15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Intel Image Classifier</h1>
+    <div class="jumbotron">
+        <h2 class="display-4">Implemented by Keras and TensorFlow</h2>
+        <p class="lead">Image Classification</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href= https://www.linkedin.com/in/dipit-jaywant role="button">Profile</a>
+        </p>
+    </div>
+    {% if filename %}
+    <div class="postImage">
+        <img class="prevImage" src="{{ url_for('display_image', filename=filename) }}">
+    </div>
+    {% endif %}
+    <form class="p-3 text-center" method="post" action="/" enctype="multipart/form-data">
+        <input class="form-control" type="file" name="imagefile" accept="jpg, jpeg, png">
+        <input class="btn btn-primary mt-3" type="submit" value="Predict Image">
+    </form>
+    {% if prediction %}
+        <p> Image is of a {{prediction}}.</p>
+    {% endif %}
+</body>
+</html>
